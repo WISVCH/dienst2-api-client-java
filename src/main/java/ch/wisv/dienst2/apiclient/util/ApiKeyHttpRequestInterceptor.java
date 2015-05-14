@@ -1,4 +1,4 @@
-package ch.wisv.dienst2.util;
+package ch.wisv.dienst2.apiclient.util;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;

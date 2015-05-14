@@ -9,25 +9,21 @@ buildscript {
     dependencies {
         classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
         classpath('org.springframework.build.gradle:propdeps-plugin:0.0.7')
-//        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-//apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
 
-//configure(allprojects) {
-    apply plugin: 'propdeps'
-    apply plugin: 'propdeps-maven'
-    apply plugin: 'propdeps-idea'
-    apply plugin: 'propdeps-eclipse'
-//}
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
 
 jar {
-    baseName = 'dienst2-api'
+    baseName = 'dienst2-api-client-java'
     version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -43,8 +39,6 @@ dependencies {
     optional("com.fasterxml.jackson.core:jackson-databind:2.5.3")
     optional("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0")
     optional("org.springframework:spring-web:4.1.6.RELEASE")
-
-//    testCompile("org.springframework:spring-web:4.1.6.RELEASE")
 
     testCompile("org.springframework.boot:spring-boot-starter:1.2.3.RELEASE")
     testCompile("org.springframework.boot:spring-boot-starter-test:1.2.3.RELEASE")

@@ -1,4 +1,4 @@
-package ch.wisv.dienst2.util;
+package ch.wisv.dienst2.apiclient.util;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.springframework.beans.factory.FactoryBean;

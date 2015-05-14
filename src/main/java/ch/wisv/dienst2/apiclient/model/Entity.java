@@ -1,4 +1,4 @@
-package ch.wisv.dienst2.model;
+package ch.wisv.dienst2.apiclient.model;
 
 /**
  * Entity model

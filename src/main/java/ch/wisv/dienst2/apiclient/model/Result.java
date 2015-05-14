@@ -1,7 +1,4 @@
-package ch.wisv.dienst2.model;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.core.ParameterizedTypeReference;
+package ch.wisv.dienst2.apiclient.model;
 
 import java.util.List;
 

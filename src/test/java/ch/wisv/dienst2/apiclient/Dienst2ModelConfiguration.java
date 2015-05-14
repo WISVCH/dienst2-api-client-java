@@ -1,6 +1,6 @@
-package ch.wisv.dienst2;
+package ch.wisv.dienst2.apiclient;
 
-import ch.wisv.dienst2.util.Dienst2RestTemplateFactoryBean;
+import ch.wisv.dienst2.apiclient.util.Dienst2RestTemplateFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

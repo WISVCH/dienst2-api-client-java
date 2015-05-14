@@ -1,8 +1,8 @@
-package ch.wisv.dienst2;
+package ch.wisv.dienst2.apiclient;
 
-import ch.wisv.dienst2.model.Person;
-import ch.wisv.dienst2.model.Result;
-import ch.wisv.dienst2.model.Student;
+import ch.wisv.dienst2.apiclient.model.Person;
+import ch.wisv.dienst2.apiclient.model.Result;
+import ch.wisv.dienst2.apiclient.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
