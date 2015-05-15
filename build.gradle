@@ -28,7 +28,7 @@ apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
 
 group = 'ch.wisv'
-version = '0.0.1'
+version = '0.0.2-SNAPSHOT'
 jar {
     baseName = 'dienst2-api-client-java'
 }
@@ -72,5 +72,19 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
         }
+    }
+}
+
+bintray {
+    user = bintray_user
+    key = bintray_key
+
+    publications = ['mavenJava']
+    dryRun = false
+    publish = true
+    pkg {
+        userOrg = 'wisvch'
+        repo = 'maven'
+        name = 'dienst2-api-client-java'
     }
 }
