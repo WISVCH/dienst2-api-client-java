@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 @SuppressWarnings("unused")
 public class Student {
-    private String person;
+    private int person;
 
     private String study;
     private int firstYear;
@@ -20,7 +20,7 @@ public class Student {
 
     private LocalDate dateVerified;
 
-    public String getPerson() {
+    public int getPerson() {
         return person;
     }
 

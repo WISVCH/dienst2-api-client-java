@@ -12,12 +12,12 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class Dienst2ModelConfiguration {
 
-    @Value("${dienst2.apikey}")
-    private String API_KEY;
+    @Value("${dienst2.apitoken}")
+    private String API_TOKEN;
 
     @Bean
     public RestTemplate restTemplateFactory() {
-        Dienst2RestTemplateFactoryBean f = new Dienst2RestTemplateFactoryBean(API_KEY);
+        Dienst2RestTemplateFactoryBean f = new Dienst2RestTemplateFactoryBean(API_TOKEN);
         return f.getObject();
     }
 }

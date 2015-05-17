@@ -7,13 +7,14 @@ import java.time.LocalDate;
  */
 @SuppressWarnings("unused")
 public class Member {
-    private String person;
+    private int person;
 
     private LocalDate dateFrom;
     private LocalDate dateTo;
     private LocalDate datePaid;
     private int amountPaid;
 
+    private boolean currentMember;
     private boolean associateMember;
     private boolean donatingMember;
 
@@ -23,7 +24,7 @@ public class Member {
 
     private LocalDate honoraryDateFrom;
 
-    public String getPerson() {
+    public int getPerson() {
         return person;
     }
 
@@ -41,6 +42,10 @@ public class Member {
 
     public int getAmountPaid() {
         return amountPaid;
+    }
+
+    public boolean isCurrentMember() {
+        return currentMember;
     }
 
     public boolean isAssociateMember() {

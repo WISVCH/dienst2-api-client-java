@@ -1,6 +1,8 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import java.net.URI;
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * Person model
@@ -29,9 +31,11 @@ public class Person extends Entity {
     private String netid;
     private String facebookId;
 
-    private String resourceUri;
-    private String member;
-    private String student;
+    private Optional<Member> member;
+    private Optional<Student> student;
+//    private Optional<Alumnus> alumnus;
+//    private Optional<Employee> employee;
+//    private List<CommitteeMembership> committees;
 
     public String getTitles() {
         return titles;
@@ -97,15 +101,11 @@ public class Person extends Entity {
         return facebookId;
     }
 
-    public String getResourceUri() {
-        return resourceUri;
-    }
-
-    public String getMember() {
+    public Optional<Member> getMember() {
         return member;
     }
 
-    public String getStudent() {
+    public Optional<Student> getStudent() {
         return student;
     }
 }

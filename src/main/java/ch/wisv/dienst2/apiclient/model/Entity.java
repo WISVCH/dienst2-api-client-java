@@ -1,10 +1,15 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import java.net.URI;
+
 /**
  * Entity model
  */
 @SuppressWarnings("unused")
 public class Entity {
+    private int id;
+    private URI url;
+
     private String streetName;
     private String houseNumber;
     private String address2;
@@ -21,7 +26,13 @@ public class Entity {
     private boolean christmasCard;
     private boolean yearbook;
 
-    private String comment;
+    public int getId() {
+        return id;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
 
     public String getStreetName() {
         return streetName;
@@ -73,9 +84,5 @@ public class Entity {
 
     public boolean isYearbook() {
         return yearbook;
-    }
-
-    public String getComment() {
-        return comment;
     }
 }

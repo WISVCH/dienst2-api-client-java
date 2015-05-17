@@ -9,19 +9,19 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 /**
- * Request interceptor to add api key
+ * Request interceptor to add API token
  */
-public class ApiKeyHttpRequestInterceptor implements ClientHttpRequestInterceptor {
+public class ApiTokenHttpRequestInterceptor implements ClientHttpRequestInterceptor {
 
-    private String apiKey;
+    private String apiToken;
 
-    public ApiKeyHttpRequestInterceptor(String apiKey) {
-        this.apiKey = apiKey;
+    public ApiTokenHttpRequestInterceptor(String apiToken) {
+        this.apiToken = apiToken;
     }
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        request.getHeaders().add("Authorization", "ApiKey " + apiKey);
+        request.getHeaders().add("Authorization", "Token " + apiToken);
         request.getHeaders().set("Accept", MediaType.APPLICATION_JSON_VALUE);
         return execution.execute(request, body);
     }

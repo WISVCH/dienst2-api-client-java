@@ -1,7 +1,7 @@
 package ch.wisv.dienst2.apiclient;
 
 import ch.wisv.dienst2.apiclient.model.Person;
-import ch.wisv.dienst2.apiclient.model.Result;
+import ch.wisv.dienst2.apiclient.model.Results;
 import ch.wisv.dienst2.apiclient.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,23 +32,24 @@ public class Dienst2ModelTests {
 
     @Test
     public void person() {
-        String url = BASEURL + "/dienst2/ldb/api/v2/person/?ldap_username={username}";
-        ParameterizedTypeReference<Result<Person>> responseType = new ParameterizedTypeReference<Result<Person>>() {
+        String url = BASEURL + "/ldb/api/v3/people/?ldap_username={username}";
+        ParameterizedTypeReference<Results<Person>> responseType = new ParameterizedTypeReference<Results<Person>>() {
         };
-        ResponseEntity<Result<Person>> e = restTemplate.exchange(url, HttpMethod.GET, null, responseType, "mark");
+        ResponseEntity<Results<Person>> e = restTemplate.exchange(url, HttpMethod.GET, null, responseType, "mark");
         assertEquals(e.getStatusCode(), HttpStatus.OK);
 
-        Result<Person> w = e.getBody();
-        assertEquals(w.getMeta().getTotalCount(), 1);
-        assertEquals(w.getObjects().size(), 1);
+        Results<Person> r = e.getBody();
+        assertEquals(r.getCount(), 1);
+        assertEquals(r.getResults().size(), 1);
 
-        Person p = w.getObjects().get(0);
+        Person p = r.getResults().get(0);
         assertEquals(p.getFirstname(), "Mark");
         assertEquals(p.getCity(), "Delft");
 
-        Student s = restTemplate.getForObject(BASEURL + p.getStudent(), Student.class);
+//        restTemplate.getForObject(BASEURL + p.getStudent(), Student.class);
+        Student s = p.getStudent().get();
         assertEquals(s.getStudy(), "Informatica");
         assertEquals(s.isYearbookPermission(), true);
-        assertEquals(s.getPerson(), p.getResourceUri());
+        assertEquals(s.getPerson(), p.getId());
     }
 }
