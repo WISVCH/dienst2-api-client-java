@@ -1,5 +1,7 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.net.URI;
 
 /**
@@ -12,7 +14,9 @@ public class Entity {
 
     private String streetName;
     private String houseNumber;
+    @JsonProperty("address_2")
     private String address2;
+    @JsonProperty("address_3")
     private String address3;
     private String postcode;
     private String city;

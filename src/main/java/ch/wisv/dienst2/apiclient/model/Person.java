@@ -1,7 +1,10 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,7 +25,7 @@ public class Person extends Entity {
     private String gender;
     private LocalDate birthdate;
     private boolean deceased;
-    private String livingWith;
+    private Optional<URI> livingWith;
 
     private boolean mailAnnouncements;
     private boolean mailCompany;
@@ -33,9 +36,11 @@ public class Person extends Entity {
 
     private Optional<Member> member;
     private Optional<Student> student;
-//    private Optional<Alumnus> alumnus;
-//    private Optional<Employee> employee;
-//    private List<CommitteeMembership> committees;
+    private Optional<Alumnus> alumnus;
+    private Optional<Employee> employee;
+
+    @JsonProperty("committee_memberships")
+    private List<CommitteeMembership> committeeMemberships;
 
     public String getTitles() {
         return titles;
@@ -77,7 +82,7 @@ public class Person extends Entity {
         return deceased;
     }
 
-    public String getLivingWith() {
+    public Optional<URI> getLivingWith() {
         return livingWith;
     }
 
@@ -107,5 +112,17 @@ public class Person extends Entity {
 
     public Optional<Student> getStudent() {
         return student;
+    }
+
+    public Optional<Alumnus> getAlumnus() {
+        return alumnus;
+    }
+
+    public Optional<Employee> getEmployee() {
+        return employee;
+    }
+
+    public List<CommitteeMembership> getCommittees() {
+        return committeeMemberships;
     }
 }

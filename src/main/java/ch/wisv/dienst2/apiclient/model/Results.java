@@ -13,7 +13,7 @@ public class Results<T> {
     private URI next;
     private URI previous;
 
-    List<T> results;
+    private List<T> results;
 
     public int getCount() {
         return count;
