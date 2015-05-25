@@ -1,10 +1,13 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  * Alumnus model
  */
 @SuppressWarnings("unused")
-public class Alumnus {
+public class Alumnus implements Serializable {
     private int person;
 
     private String study;
@@ -62,5 +65,29 @@ public class Alumnus {
 
     public char getContactMethod() {
         return contactMethod;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Alumnus alumnus = (Alumnus) o;
+        return Objects.equals(person, alumnus.person) &&
+                Objects.equals(studyFirstYear, alumnus.studyFirstYear) &&
+                Objects.equals(studyLastYear, alumnus.studyLastYear) &&
+                Objects.equals(contactMethod, alumnus.contactMethod) &&
+                Objects.equals(study, alumnus.study) &&
+                Objects.equals(researchGroup, alumnus.researchGroup) &&
+                Objects.equals(paper, alumnus.paper) &&
+                Objects.equals(professor, alumnus.professor) &&
+                Objects.equals(workCompany, alumnus.workCompany) &&
+                Objects.equals(position, alumnus.position) &&
+                Objects.equals(sector, alumnus.sector);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(person, study, studyFirstYear, studyLastYear, researchGroup, paper, professor,
+                workCompany, position, sector, contactMethod);
     }
 }

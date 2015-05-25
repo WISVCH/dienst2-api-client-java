@@ -2,9 +2,11 @@ package ch.wisv.dienst2.apiclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Optional;
  */
 // @JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressWarnings("unused")
-public class Person extends Entity {
+public class Person extends Entity implements Serializable {
     private String titles;
     private String initials;
     private String firstname;
@@ -25,7 +27,7 @@ public class Person extends Entity {
     private String gender;
     private LocalDate birthdate;
     private boolean deceased;
-    private Optional<URI> livingWith;
+    private URI livingWith;
 
     private boolean mailAnnouncements;
     private boolean mailCompany;
@@ -34,10 +36,10 @@ public class Person extends Entity {
     private String netid;
     private String facebookId;
 
-    private Optional<Member> member;
-    private Optional<Student> student;
-    private Optional<Alumnus> alumnus;
-    private Optional<Employee> employee;
+    private Member member;
+    private Student student;
+    private Alumnus alumnus;
+    private Employee employee;
 
     @JsonProperty("committee_memberships")
     private List<CommitteeMembership> committeeMemberships;
@@ -83,7 +85,7 @@ public class Person extends Entity {
     }
 
     public Optional<URI> getLivingWith() {
-        return livingWith;
+        return Optional.ofNullable(livingWith);
     }
 
     public boolean isMailAnnouncements() {
@@ -107,22 +109,58 @@ public class Person extends Entity {
     }
 
     public Optional<Member> getMember() {
-        return member;
+        return Optional.ofNullable(member);
     }
 
     public Optional<Student> getStudent() {
-        return student;
+        return Optional.ofNullable(student);
     }
 
     public Optional<Alumnus> getAlumnus() {
-        return alumnus;
+        return Optional.ofNullable(alumnus);
     }
 
     public Optional<Employee> getEmployee() {
-        return employee;
+        return Optional.ofNullable(employee);
     }
 
     public List<CommitteeMembership> getCommittees() {
         return committeeMemberships;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Person person = (Person) o;
+        return Objects.equals(deceased, person.deceased) &&
+                Objects.equals(mailAnnouncements, person.mailAnnouncements) &&
+                Objects.equals(mailCompany, person.mailCompany) &&
+                Objects.equals(titles, person.titles) &&
+                Objects.equals(initials, person.initials) &&
+                Objects.equals(firstname, person.firstname) &&
+                Objects.equals(preposition, person.preposition) &&
+                Objects.equals(surname, person.surname) &&
+                Objects.equals(postfixTitles, person.postfixTitles) &&
+                Objects.equals(phoneMobile, person.phoneMobile) &&
+                Objects.equals(gender, person.gender) &&
+                Objects.equals(birthdate, person.birthdate) &&
+                Objects.equals(livingWith, person.livingWith) &&
+                Objects.equals(ldapUsername, person.ldapUsername) &&
+                Objects.equals(netid, person.netid) &&
+                Objects.equals(facebookId, person.facebookId) &&
+                Objects.equals(member, person.member) &&
+                Objects.equals(student, person.student) &&
+                Objects.equals(alumnus, person.alumnus) &&
+                Objects.equals(employee, person.employee) &&
+                Objects.equals(committeeMemberships, person.committeeMemberships);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), titles, initials, firstname, preposition, surname, postfixTitles,
+                phoneMobile, gender, birthdate, deceased, livingWith, mailAnnouncements, mailCompany, ldapUsername,
+                netid, facebookId, member, student, alumnus, employee, committeeMemberships);
     }
 }

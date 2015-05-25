@@ -2,13 +2,15 @@ package ch.wisv.dienst2.apiclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.net.URI;
+import java.util.Objects;
 
 /**
  * Entity model
  */
 @SuppressWarnings("unused")
-public class Entity {
+public class Entity implements Serializable {
     private int id;
     private URI url;
 
@@ -88,5 +90,33 @@ public class Entity {
 
     public boolean isYearbook() {
         return yearbook;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entity entity = (Entity) o;
+        return Objects.equals(id, entity.id) &&
+                Objects.equals(machazine, entity.machazine) &&
+                Objects.equals(constitutionCard, entity.constitutionCard) &&
+                Objects.equals(christmasCard, entity.christmasCard) &&
+                Objects.equals(yearbook, entity.yearbook) &&
+                Objects.equals(url, entity.url) &&
+                Objects.equals(streetName, entity.streetName) &&
+                Objects.equals(houseNumber, entity.houseNumber) &&
+                Objects.equals(address2, entity.address2) &&
+                Objects.equals(address3, entity.address3) &&
+                Objects.equals(postcode, entity.postcode) &&
+                Objects.equals(city, entity.city) &&
+                Objects.equals(country, entity.country) &&
+                Objects.equals(email, entity.email) &&
+                Objects.equals(phoneFixed, entity.phoneFixed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, url, streetName, houseNumber, address2, address3, postcode, city, country, email,
+                phoneFixed, machazine, constitutionCard, christmasCard, yearbook);
     }
 }

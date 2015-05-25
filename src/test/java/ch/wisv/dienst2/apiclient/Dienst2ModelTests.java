@@ -13,6 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.SerializationUtils;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
@@ -51,5 +52,16 @@ public class Dienst2ModelTests {
         assertEquals(s.getStudy(), "Informatica");
         assertEquals(s.isYearbookPermission(), true);
         assertEquals(s.getPerson(), p.getId());
+
+        testSerialization(r);
+        testSerialization(p);
+        testSerialization(s);
     }
+
+    private void testSerialization(Object object) {
+        byte[] serializedObject = SerializationUtils.serialize(object);
+        Object deserializedObject = SerializationUtils.deserialize(serializedObject);
+        assertEquals(object, deserializedObject);
+    }
+
 }

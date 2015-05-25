@@ -1,12 +1,14 @@
 package ch.wisv.dienst2.apiclient.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Member model
  */
 @SuppressWarnings("unused")
-public class Member {
+public class Member implements Serializable {
     private int person;
 
     private LocalDate dateFrom;
@@ -70,5 +72,30 @@ public class Member {
 
     public LocalDate getHonoraryDateFrom() {
         return honoraryDateFrom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(person, member.person) &&
+                Objects.equals(amountPaid, member.amountPaid) &&
+                Objects.equals(currentMember, member.currentMember) &&
+                Objects.equals(associateMember, member.associateMember) &&
+                Objects.equals(donatingMember, member.donatingMember) &&
+                Objects.equals(meritInvitations, member.meritInvitations) &&
+                Objects.equals(dateFrom, member.dateFrom) &&
+                Objects.equals(dateTo, member.dateTo) &&
+                Objects.equals(datePaid, member.datePaid) &&
+                Objects.equals(meritDateFrom, member.meritDateFrom) &&
+                Objects.equals(meritHistory, member.meritHistory) &&
+                Objects.equals(honoraryDateFrom, member.honoraryDateFrom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(person, dateFrom, dateTo, datePaid, amountPaid, currentMember, associateMember,
+                donatingMember, meritDateFrom, meritInvitations, meritHistory, honoraryDateFrom);
     }
 }
