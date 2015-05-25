@@ -1,5 +1,6 @@
 package ch.wisv.dienst2.apiclient.util;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -21,8 +22,9 @@ public class ApiTokenHttpRequestInterceptor implements ClientHttpRequestIntercep
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        request.getHeaders().add("Authorization", "Token " + apiToken);
-        request.getHeaders().set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        request.getHeaders().add(HttpHeaders.AUTHORIZATION, "Token " + apiToken);
+        request.getHeaders().set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+        request.getHeaders().set(HttpHeaders.ACCEPT_LANGUAGE, "en");
         return execution.execute(request, body);
     }
 }
