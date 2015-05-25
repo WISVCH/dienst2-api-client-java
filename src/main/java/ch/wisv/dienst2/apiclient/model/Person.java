@@ -15,6 +15,7 @@ import java.util.Optional;
 // @JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressWarnings("unused")
 public class Person extends Entity implements Serializable {
+    private String formattedName;
     private String titles;
     private String initials;
     private String firstname;
@@ -43,6 +44,14 @@ public class Person extends Entity implements Serializable {
 
     @JsonProperty("committee_memberships")
     private List<CommitteeMembership> committeeMemberships;
+
+    public String getFormattedName() {
+        return formattedName;
+    }
+
+    public List<CommitteeMembership> getCommitteeMemberships() {
+        return committeeMemberships;
+    }
 
     public String getTitles() {
         return titles;

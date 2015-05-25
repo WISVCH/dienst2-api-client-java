@@ -14,6 +14,8 @@ public class Entity implements Serializable {
     private int id;
     private URI url;
 
+    private String streetAddress;
+    private String formattedAddress;
     private String streetName;
     private String houseNumber;
     @JsonProperty("address_2")
@@ -23,6 +25,7 @@ public class Entity implements Serializable {
     private String postcode;
     private String city;
     private String country;
+    private String countryFull;
     private String email;
 
     private String phoneFixed;
@@ -38,6 +41,14 @@ public class Entity implements Serializable {
 
     public URI getUrl() {
         return url;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public String getFormattedAddress() {
+        return formattedAddress;
     }
 
     public String getStreetName() {
@@ -66,6 +77,10 @@ public class Entity implements Serializable {
 
     public String getCountry() {
         return country;
+    }
+
+    public String getCountryFull() {
+        return countryFull;
     }
 
     public String getEmail() {
