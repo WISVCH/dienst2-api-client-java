@@ -14,12 +14,12 @@ Include wisvch maven repository, then include this library as dependency:
 repositories {
     mavenCentral()
     maven {
-        url "http://dl.bintray.com/wisvch/maven"
+        url "https://dl.bintray.com/wisvch/maven"
     }
 }
 
 dependencies {
-    compile 'ch.wisv:dienst2-api-client-java:VERSION_CHANGEME'
+    compile "ch.wisv:dienst2-api-client-java:+"
 }
 ````
 
