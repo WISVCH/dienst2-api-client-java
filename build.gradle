@@ -41,11 +41,9 @@ repositories {
 }
 
 dependencies {
-    compile("com.fasterxml.jackson.core:jackson-annotations:2.5.3")
-
-    optional("com.fasterxml.jackson.core:jackson-databind:2.5.3")
-    optional("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.3")
-    optional("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.5.3")
+    optional("com.fasterxml.jackson.core:jackson-annotations:2.3.4")
+    optional("com.fasterxml.jackson.core:jackson-databind:2.3.4")
+    optional("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.3.4")
     optional("org.springframework:spring-web:4.1.6.RELEASE")
 
     testCompile("org.springframework.boot:spring-boot-starter:1.2.3.RELEASE")

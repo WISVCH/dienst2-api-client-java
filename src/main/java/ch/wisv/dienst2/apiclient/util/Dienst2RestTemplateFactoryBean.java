@@ -1,7 +1,6 @@
 package ch.wisv.dienst2.apiclient.util;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -33,7 +32,6 @@ public class Dienst2RestTemplateFactoryBean implements FactoryBean<RestTemplate>
     public static MappingJackson2HttpMessageConverter underscoreMessageConverter() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         builder.propertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
-        builder.modulesToInstall(new Jdk8Module());
 
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(builder.build());
