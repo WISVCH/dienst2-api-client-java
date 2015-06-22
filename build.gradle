@@ -28,7 +28,7 @@ apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
 
 group = 'ch.wisv'
-version = '0.0.4-SNAPSHOT'
+version = '0.0.4'
 jar {
     baseName = 'dienst2-api-client-java'
 }
