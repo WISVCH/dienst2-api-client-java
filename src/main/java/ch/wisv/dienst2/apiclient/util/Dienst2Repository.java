@@ -4,7 +4,9 @@ import ch.wisv.dienst2.apiclient.model.Person;
 import ch.wisv.dienst2.apiclient.model.Results;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
@@ -47,9 +49,17 @@ public class Dienst2Repository {
         return getAtMostOneResult(e);
     }
 
-    public Person getPerson(int id) {
-        String url = baseUrl + "/ldb/api/v3/people/{personId}/";
-        return restTemplate.getForObject(url, Person.class);
+    public Optional<Person> getPerson(int id) {
+        String url = baseUrl + "/ldb/api/v3/people/{id}/";
+        try {
+            return Optional.of(restTemplate.getForObject(url, Person.class, id));
+        } catch (HttpClientErrorException e) {
+            if (e.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+                return Optional.empty();
+            } else {
+                throw e;
+            }
+        }
     }
 
     private <T> Optional<T> getAtMostOneResult(ResponseEntity<Results<T>> e) {

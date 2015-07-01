@@ -35,6 +35,9 @@ public class Dienst2ModelTests {
 
         testSerialization(p);
         testSerialization(s);
+
+        Person p2 = dienst2Repository.getPerson(2420).get();
+        assertEquals(p, p2);
     }
 
     private void testSerialization(Object object) {
