@@ -1,5 +1,6 @@
 package ch.wisv.dienst2.apiclient;
 
+import ch.wisv.dienst2.apiclient.model.MembershipStatus;
 import ch.wisv.dienst2.apiclient.model.Person;
 import ch.wisv.dienst2.apiclient.model.Student;
 import ch.wisv.dienst2.apiclient.util.Dienst2Repository;
@@ -27,6 +28,7 @@ public class Dienst2ModelTests {
         Person p = dienst2Repository.getPersonFromLdapUsername("mark").get();
         assertEquals(p.getFirstname(), "Mark");
         assertEquals(p.getCity(), "Delft");
+        assertEquals(p.getMembershipStatus(), MembershipStatus.MERIT);
 
         Student s = p.getStudent().get();
         assertEquals(s.getStudy(), "Informatica");

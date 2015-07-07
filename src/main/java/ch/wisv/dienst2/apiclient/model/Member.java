@@ -17,8 +17,10 @@ public class Member implements Serializable {
     private int amountPaid;
 
     private boolean currentMember;
-    private boolean associateMember;
-    private boolean donatingMember;
+    private boolean currentAssociateMember;
+    private boolean currentDonatingMember;
+    private boolean currentMeritMember;
+    private boolean currentHonoraryMember;
 
     private LocalDate meritDateFrom;
     private boolean meritInvitations;
@@ -50,12 +52,20 @@ public class Member implements Serializable {
         return currentMember;
     }
 
-    public boolean isAssociateMember() {
-        return associateMember;
+    public boolean isCurrentAssociateMember() {
+        return currentAssociateMember;
     }
 
-    public boolean isDonatingMember() {
-        return donatingMember;
+    public boolean isCurrentDonatingMember() {
+        return currentDonatingMember;
+    }
+
+    public boolean isCurrentMeritMember() {
+        return currentMeritMember;
+    }
+
+    public boolean isCurrentHonoraryMember() {
+        return currentHonoraryMember;
     }
 
     public LocalDate getMeritDateFrom() {
@@ -82,8 +92,10 @@ public class Member implements Serializable {
         return Objects.equals(person, member.person) &&
                 Objects.equals(amountPaid, member.amountPaid) &&
                 Objects.equals(currentMember, member.currentMember) &&
-                Objects.equals(associateMember, member.associateMember) &&
-                Objects.equals(donatingMember, member.donatingMember) &&
+                Objects.equals(currentAssociateMember, member.currentAssociateMember) &&
+                Objects.equals(currentDonatingMember, member.currentDonatingMember) &&
+                Objects.equals(currentMeritMember, member.currentMeritMember) &&
+                Objects.equals(currentHonoraryMember, member.currentHonoraryMember) &&
                 Objects.equals(meritInvitations, member.meritInvitations) &&
                 Objects.equals(dateFrom, member.dateFrom) &&
                 Objects.equals(dateTo, member.dateTo) &&
@@ -95,7 +107,8 @@ public class Member implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(person, dateFrom, dateTo, datePaid, amountPaid, currentMember, associateMember,
-                donatingMember, meritDateFrom, meritInvitations, meritHistory, honoraryDateFrom);
+        return Objects.hash(person, dateFrom, dateTo, datePaid, amountPaid, currentMember, currentAssociateMember,
+                currentDonatingMember, currentMeritMember, currentHonoraryMember, meritDateFrom, meritInvitations,
+                meritHistory, honoraryDateFrom);
     }
 }

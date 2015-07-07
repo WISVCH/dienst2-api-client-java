@@ -37,6 +37,8 @@ public class Person extends Entity implements Serializable {
     private String netid;
     private String facebookId;
 
+    private MembershipStatus membershipStatus;
+
     private Member member;
     private Student student;
     private Alumnus alumnus;
@@ -117,6 +119,10 @@ public class Person extends Entity implements Serializable {
         return facebookId;
     }
 
+    public MembershipStatus getMembershipStatus() {
+        return membershipStatus;
+    }
+
     public Optional<Member> getMember() {
         return Optional.ofNullable(member);
     }
@@ -172,4 +178,5 @@ public class Person extends Entity implements Serializable {
                 phoneMobile, gender, birthdate, deceased, livingWith, mailAnnouncements, mailCompany, ldapUsername,
                 netid, facebookId, member, student, alumnus, employee, committeeMemberships);
     }
+
 }
