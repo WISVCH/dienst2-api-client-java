@@ -1,6 +1,7 @@
 package ch.wisv.dienst2.apiclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.net.URI;
@@ -73,6 +74,14 @@ public class Person extends Entity implements Serializable {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getSurnameWithPreposition() {
+        if (!StringUtils.isEmpty(getPreposition())) {
+            return getPreposition() + " " + getSurname();
+        } else {
+            return getSurname();
+        }
     }
 
     public String getPostfixTitles() {

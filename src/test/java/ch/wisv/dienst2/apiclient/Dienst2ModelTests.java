@@ -40,6 +40,12 @@ public class Dienst2ModelTests {
         assertEquals(p, p2);
     }
 
+    @Test
+    public void personSurnameWithPreposition() {
+        Person p = dienst2Repository.getPerson(2859).get();
+        assertEquals(p.getSurnameWithPreposition().substring(0, 3), "de ");
+    }
+
     private void testSerialization(Object object) {
         byte[] serializedObject = SerializationUtils.serialize(object);
         Object deserializedObject = SerializationUtils.deserialize(serializedObject);
