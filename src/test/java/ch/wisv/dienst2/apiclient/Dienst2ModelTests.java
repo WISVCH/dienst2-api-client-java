@@ -7,14 +7,14 @@ import ch.wisv.dienst2.apiclient.util.Dienst2Repository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.SerializationUtils;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Dienst2Model.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Dienst2Model.class)
 public class Dienst2ModelTests {
     @Autowired
     private Dienst2Repository dienst2Repository;
@@ -27,12 +27,10 @@ public class Dienst2ModelTests {
     public void person() {
         Person p = dienst2Repository.getPersonFromLdapUsername("mark").get();
         assertEquals(p.getFirstname(), "Mark");
-        assertEquals(p.getCity(), "Delft");
         assertEquals(p.getMembershipStatus(), MembershipStatus.MERIT);
 
         Student s = p.getStudent().get();
         assertEquals(s.getStudy(), "Informatica");
-        assertEquals(s.isYearbookPermission(), true);
         assertEquals(s.getPerson(), p.getId());
 
         testSerialization(p);
