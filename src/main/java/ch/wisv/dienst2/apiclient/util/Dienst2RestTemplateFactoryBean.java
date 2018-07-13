@@ -2,7 +2,7 @@ package ch.wisv.dienst2.apiclient.util;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -23,8 +23,8 @@ public class Dienst2RestTemplateFactoryBean implements FactoryBean<RestTemplate>
     @Override
     public RestTemplate getObject() {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setInterceptors(Collections.<ClientHttpRequestInterceptor>singletonList(new
-                ApiTokenHttpRequestInterceptor(apiToken)));
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        restTemplate.setInterceptors(Collections.singletonList(new ApiTokenHttpRequestInterceptor(apiToken)));
         restTemplate.setMessageConverters(Collections.singletonList(underscoreMessageConverter()));
         return restTemplate;
     }
