@@ -16,7 +16,8 @@ public class Student implements Serializable {
     private String studentNumber;
     private boolean graduated;
 
-    private String phoneParents;
+    private String emergencyName;
+    private String emergencyPhone;
 
     private boolean yearbookPermission;
 
@@ -42,8 +43,12 @@ public class Student implements Serializable {
         return graduated;
     }
 
-    public String getPhoneParents() {
-        return phoneParents;
+    public String getEmergencyName() {
+        return emergenceName;
+    }
+	
+    public String getEmergencyPhone() {
+        return emergencyPhone;
     }
 
     public boolean isYearbookPermission() {
@@ -65,13 +70,14 @@ public class Student implements Serializable {
                 Objects.equals(yearbookPermission, student.yearbookPermission) &&
                 Objects.equals(study, student.study) &&
                 Objects.equals(studentNumber, student.studentNumber) &&
-                Objects.equals(phoneParents, student.phoneParents) &&
+                Objects.equals(emergencyName, student.emergencyName) &&
+                Objects.equals(emergencyPhone, student.emergencyPhone) &&
                 Objects.equals(dateVerified, student.dateVerified);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(person, study, firstYear, studentNumber, graduated, phoneParents, yearbookPermission,
+        return Objects.hash(person, study, firstYear, studentNumber, graduated, emergencyName, emergencyPhone, yearbookPermission,
                 dateVerified);
     }
 }
